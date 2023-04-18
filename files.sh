@@ -1,32 +1,29 @@
 #!/bin/bash
 
 # Define o nome dos arquivos de saída
-README="Readme.md"
-FILELIST="filelist.txt"
+FILELIST="FilesList.md"
+HASHFILE="HashList.txt"
 
 # Limpa os arquivos de saída existentes
-> $README
 > $FILELIST
+> $HASHFILE
 
 # Função recursiva para processar cada arquivo e pasta
 process() {
     local path="$1"
     for file in "$path"/*; do
-        # Ignora os arquivos README, arquivo de lista de arquivos e pastas vazias
-        if [[ $file != $README && $file != $FILELIST && -n "$(ls -A "$file")" ]]; then
+        # Ignora os arquivos FilesList.md, HashList.txt e pastas vazias
+        if [[ $file != $FILELIST && $file != $HASHFILE && -n "$(ls -A "$file")" ]]; then
             # Adiciona o caminho do arquivo ou pasta ao arquivo de lista de arquivos
-            echo "$file" >> $FILELIST
+            echo "- $file" >> $FILELIST
             
             # Se for uma pasta, chama a função process recursivamente
             if [[ -d "$file" ]]; then
                 process "$file"
-            # Se for um arquivo, calcula o hash MD5 e adiciona informações do arquivo ao arquivo README
+            # Se for um arquivo, calcula o hash MD5 e adiciona informações do arquivo ao arquivo de hash
             elif [[ -f "$file" ]]; then
                 hash=$(md5sum "$file" | awk '{ print $1 }')
-                echo "## $file" >> $README
-                echo "- Caminho: $file" >> $README
-                echo "- Hash MD5: $hash" >> $README
-                echo "" >> $README
+                echo "$hash $file" >> $HASHFILE
             fi
         fi
     done
@@ -36,4 +33,4 @@ process() {
 process "$(pwd)"
 
 # Imprime mensagem de conclusão
-echo "Arquivos e pastas e seus hashes MD5 foram exportados com sucesso para $README e $FILELIST."
+echo "Arquivos e pastas e seus hashes MD5 foram exportados com sucesso para $FILELIST e $HASHFILE."
