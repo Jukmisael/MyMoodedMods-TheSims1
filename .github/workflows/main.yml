@@ -1,0 +1,31 @@
+name: Calcular hashes MD5
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  calculate_md5:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
+
+    - name: Executar script
+      run: |
+        bash seu_script.sh
+        cat Readme.md >> README-original.md
+        rm Readme.md
+        echo "Lista de arquivos:" > lista_arquivos.txt
+        cat filelist.txt >> lista_arquivos.txt
+
+    - name: Salvar artefatos
+      uses: actions/upload-artifact@v2
+      with:
+        name: arquivo-artefato
+        path: |
+          README-original.md
+          lista_arquivos.txt
+
