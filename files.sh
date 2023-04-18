@@ -28,5 +28,4 @@ done
 
 # Imprime mensagem de conclusão
 echo "Arquivos e pastas e seus hashes MD5 foram exportados com sucesso para $README e $FILELIST."
-
-
+echo " "
