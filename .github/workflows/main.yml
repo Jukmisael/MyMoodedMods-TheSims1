@@ -20,6 +20,7 @@ jobs:
         rm Readme.md
         echo "Lista de arquivos:" > lista_arquivos.txt
         cat filelist.txt >> lista_arquivos.txt
+        bash group.sh
 
     - name: Salvar artefatos
       uses: actions/upload-artifact@v2
