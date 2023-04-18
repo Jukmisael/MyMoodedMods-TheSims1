@@ -17,8 +17,6 @@ jobs:
     - name: Executar script
       run: |
         bash files.sh
-        cat Readme.md >> README-original.md
-        rm Readme.md
         echo "Lista de arquivos:" > lista_arquivos.txt
         cat filelist.txt >> lista_arquivos.txt
         bash group.sh
@@ -28,5 +26,6 @@ jobs:
       with:
         name: arquivo-artefato
         path: |
-          README-original.md
+          FilesList.md
           lista_arquivos.txt
+          HashList.txt
