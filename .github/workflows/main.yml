@@ -15,7 +15,7 @@ jobs:
 
     - name: Executar script
       run: |
-        bash seu_script.sh
+        bash files.sh
         cat Readme.md >> README-original.md
         rm Readme.md
         echo "Lista de arquivos:" > lista_arquivos.txt
