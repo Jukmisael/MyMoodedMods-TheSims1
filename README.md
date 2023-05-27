@@ -32,7 +32,7 @@ Desc: Laptop Silver, permite que você trabalhe Home Office.
 
 WIP.
 
-* Usando iFFPencil2 (está em [_Tools](/Workgroup/_Tools/IFFPencil2)
+* Usando iFFPencil2 (está em [_Tools](/Workgroup/_Tools/IFFPencil2))
 
 - CTSS = Nome e Descrição do Item
 - STRG# = Todas as Strings do Item ( Marcados com "!" são Variavéis?)
